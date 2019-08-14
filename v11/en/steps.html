@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM App Connect Enterprise V11 Tutorial" /> 
+		
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
+
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">JMS - Using the JMSOutput and JMSReceive nodes with messages and queues <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to use the JMSOutput and JMSReceive nodes to interact with queues defined on an IBM MQ queue manager. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, two projects will be created in your workspace: An application named <span class="application">ExampleJMSOutput</span> and an application named <span class="application">ExampleJMSReceive</span>. </p>
+								
+							
+								<p> <span class="application">ExampleJMSOutput</span> provides a message flow named <span class="resource">JMSOutput</span>. </p>
+								
+							
+								<p> <span class="application">ExampleJMSReceive</span> provides a message flow named <span class="resource">JMSReceive</span>. </p>
+								
+							
+								<p> The <span class="resource">JMSOutput</span> message flow is driven by an HTTPInput node configured to receive any input message as BLOB. The message is echoed back using an HTTPReply node and also propagated to an HTTPHeader node which removes the HTTP header. Next, a JMSHeader node creates a new JMS header, followed by a Mapping node which creates a new message body which is hardcoded to the value <code>This hardcoded data will be written to and read from the JMS queue</code>. Finally a JMSOutput node puts the message on to a JMS destination queue with the name jmsexample. </p>
+								
+							
+								<p> The <span class="resource">JMSReceive</span> message flow is driven by an HTTPInput node and uses a JMSReceive node to read a message from the output queue of the first flow - jmsexample. If a message is read from the queue, then the following JMSHeader node removes the JMS header, and passes the body back to the original requestor using an HTTPReply node.  If no message is read from the queue, a Mapping node constructs a simple HTTP reply instead. </p>
+								
+							
+								<p> Once imported using the link on the right, the applications <span class="application">ExampleJMSOutput</span> and <span class="application">ExampleJMSReceive</span> are ready to be deployed and tested. To deploy, you can use the provided BAR files, as described on the Prepare tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+							   	
+							
+							</ul>
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Create a queue manager and integration node, set up the JMS configuration, and then deploy the message flows</h4>
+						    
+						    
+								<p> The tutorial requires MQ and JMS definitions.  Execute the following steps to prepare your environment accordingly: </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Create an IBM MQ queue manager and configure it by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class="cmdname">crtmqm</span> <span class="varname">TESTQM</span></code><br><code><span class="cmdname">strmqm</span> <span class="varname">TESTQM</span></code></li>
+												
+													<li> Next create a queue and a listener by typing the following commands:<br><code>runmqsc <span class="varname">TESTQM</span></code><br><code>define ql(EXAMPLE)</code><br><code>define listener(LISTENER1) TRPTYPE(TCP) PORT(2414)</code><br><code>start listener(LISTENER1)</code></li>
+												
+													<li> The connection to the queue manager will attempt to use the default server connection channel named SYSTEM.DEF.SVRCONN but you shouldn't need to create this as it will have been created when the queue manager was created. You may also need to consider your MQ channel security settings.</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> When using the IBM App Connect Enterprise JMS nodes in a message flow, the configuration required to locate the JMS provider queues is defined using a JNDI (Java Naming and Directory Interface) bindings file. Your JMS provider is likely to provide an adminstration tool or script to help you generate this bindings file. This tutorial uses IBM MQ as JMS provider, and the instructions below describe how to set up this bindings file. These instructions assume you are running this tutorial on a Windows machine. For help with other platforms, please consult the product documentation. Set up the JMS configuration for the IBM MQ queue manager by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> On the filesystem, create the folder <code>C:\JNDI-Directory</code> (unless you have previously editted your JMSAdmin.config file, this is where the JNDI bindings file will be generated when you complete the following instructions).</li>
+												
+													<li> IBM MQ provides a JMS Admin Tool Execution Script called <span class="resource">JMSAdmin.bat</span>. Run this script, passing in a definitions file which is provided in the ExampleJMS application project which you previously imported to your Toolkit workspace. Assuming you used the default location for your MQ installation, and that your Toolkit workspace is defined at C:\ToolkitWorkspace, open a command console and execute the following commands:<br><code>cd C:\Program Files\IBM\MQ\Java\bin</code><br><code>JMSAdmin &lt; "C:\ToolkitWorkspace\ExampleJMSOutput\jms.defs"</code></li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Create an integration node by completing the following steps. Note that the integration node does not necessarily need to be co-located with the queue manager:
+										
+										
+											
+											<ol>
+											
+												
+													<li> In the console window, create an integration node by typing the following command:<br><code><span class="cmdname">mqsicreatebroker</span> <span class="varname">TESTNODE</span></code></li>
+												
+													<li> Start the integration node by typing the following command:<br><code><span class="cmdname">mqsistart</span> <span class="varname">TESTNODE</span></code></li>
+												
+													<li> Create an integration server associated with the integration node by typing the following command:<br><code><span class="cmdname">mqsicreateexecutiongroup</span> <span class="varname">TESTNODE</span> -e <span class="varname">default</span></code></li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Back in the Toolkit, drag and drop deploy the provided BAR files named <span class="application">JMSOutput.bar</span> which you will find inside the <span class="application">ExampleJMSOutput</span> application and <span class="application">JMSReceive.bar</span> which you will find inside the <span class="application">ExampleJMSReceive</span> application.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4></h4>
+							<ul>
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+					<div class="small-12 medium-12 large-12 columns">
+					
+				    	<div class="row content-details">
+					      	<h4></h4>
+					        
+						    
+								<p> <h4>Use the Flow Exerciser to test the tutorial scenario </h4></p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Open <span class="resource">JMSOutput.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow (when challenged you do not need to redeploy the flow again).</li>
+												
+													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
+												
+													<li> A saved input message is provided named <span class="resource">InputMessage</span> which contains this data:<br><span class="resource">This can be anything</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. The same data should be echoed in the response. Close the dialog and a green line is shown plotting the full path of the message through the flow.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> Open <span class="resource">JMSReceive.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow (when challenged you do not need to redeploy the flow again).</li>
+												
+													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
+												
+													<li> A saved input message is provided named <span class="resource">InputMessage</span> which contains this data:<br><span class="resource">This can be anything</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. The response message which is returned should match the data which was written to the JMS queue by the first message flow which contains this text:<br><span class="resource">This hardcoded data will be written to and read from the JMS queue</span></li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> This tutorial has shown how to use the JMSOutput and JMSReceive nodes to interact with queues defined on an IBM MQ queue manager. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bc19200_.htm')" title="Knowledge Center link to JMSReceive node">JMSReceive node</a> </li>
+							   	
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/ac24830_.htm')" title="Knowledge Center link to JMSOutput node">JMSOutput node</a> </li>
+							   	
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+							   	
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
