@@ -180,7 +180,7 @@
                                        "details":"Next create a queue and a listener by typing the following commands:<br><code>runmqsc <span class='varname'>TESTQM</span></code><br><code>define ql(EXAMPLE)</code><br><code>define listener(LISTENER1) TRPTYPE(TCP) PORT(2414)</code><br><code>start listener(LISTENER1)</code>"
                                     },
 									{
-										"details":"The connection to the queue manager will attempt to use the default server connection channel named SYSTEM.DEF.SVRCONN but you shouldn't need to create this as it will have been created when the queue manager was created. You may also need to consider your MQ channel security settings."
+										"details":"The connection to the queue manager will attempt to use the default server connection channel named SYSTEM.DEF.SVRCONN and will not flow a username / password on the connection. If the user running the tutorial is an MQ Administrator then it is necessary to disable MQ Channel Authentication before running the tutorial by typing the following commands:<br><code>runmqsc <span class='varname'>TESTQM</span></code><br><code>alter qmgr CHLAUTH(DISABLED)</code><br><code>alter authinfo(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(OPTIONAL)</code><br><code>end</code><br><code>endmqm -i TESTQM</code><br><code>strmqm TESTQM</code>"	
 									}
                                  ]
                               }
