@@ -68,14 +68,14 @@
             "summary": 
 			{
                 "overviewName": "OVERVIEW",
-                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
                 "sections": 
 				[
                     {
                         "section": "This tutorial demonstrates two simple message flows. The first is driven using an input message over HTTP which is echoed back to the requestor unchanged, and also propagated to an HTTPHeader node which removes the HTTP header. Next, a JMSHeader node adds a JMS header, and then a Mapping node prepares a fixed string of data in the message body. The message is passed to a JMSOutput node and written to a JMS destination queue. The second message flow starts from an HTTPInput message which can receive any input. The next node is a JMSReceive node which reads a meesage from the same JMS destination which was written to by the first flow. If a message is read from the queue, then the following JMSHeader node removes the JMS header, and passes the body back to the original requestor using an HTTPReply node.  If no message is read from the queue, a Mapping node constructs a simple HTTP reply instead."
                     },
                     {
-                        "section": "The tutorial requires an ACE integration node owned server, or a standalone server."
+                        "section": "The tutorial requires an integration node owned server, or a standalone server."
                     },
                     {
                         "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. This scenario uses JMS nodes which are configured to interact with an IBM MQ queue manager, but which could easily be substituted for another JMS provider if you wish. There are no other pre-requisites needed by the scenario."
